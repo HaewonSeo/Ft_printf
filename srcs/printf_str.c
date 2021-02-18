@@ -6,7 +6,7 @@
 /*   By: haseo <haseo@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/17 18:30:21 by haseo             #+#    #+#             */
-/*   Updated: 2021/02/18 02:04:10 by haseo            ###   ########.fr       */
+/*   Updated: 2021/02/19 03:15:19 by haseo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,12 +43,14 @@ void		printf_str(t_spec *spec, const char *str)
 
 	if (!str)
 		str = "(null)";
+	str_len = (int)ft_strlen(str);
 	if (spec->dot && spec->prec == 0)
 	{
-		spec->cnt_ch = 0;
+		valid_str_len = 0;
+		blank_pad_len = spec->width;
+		printf_str_by_len(spec, str, blank_pad_len, valid_str_len);
 		return ;
 	}
-	str_len = (int)ft_strlen(str);
 	valid_str_len = ((spec->prec > 0) && (spec->prec < str_len)) ? spec->prec : str_len;
 	blank_pad_len = spec->width - valid_str_len;
 	printf_str_by_len(spec, str, blank_pad_len, valid_str_len);
