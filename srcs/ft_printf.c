@@ -6,13 +6,13 @@
 /*   By: haseo <haseo@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/12 23:02:56 by haseo             #+#    #+#             */
-/*   Updated: 2021/02/19 00:19:06 by haseo            ###   ########.fr       */
+/*   Updated: 2021/02/19 02:18:10 by haseo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	printf_spec(t_spec *spec, va_list ap)
+static void		printf_spec(t_spec *spec, va_list ap)
 {
 	if (spec->type == 'c')
 		printf_ch(spec, va_arg(ap, int));
@@ -28,7 +28,7 @@ void	printf_spec(t_spec *spec, va_list ap)
 		printf_ch(spec, '%');
 }
 
-int		print_format(const char *format, va_list ap)
+static int		print_format(const char *format, va_list ap)
 {
 	int		i;
 	int		cnt_ch;

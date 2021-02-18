@@ -6,7 +6,7 @@
 /*   By: haseo <haseo@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/17 18:30:12 by haseo             #+#    #+#             */
-/*   Updated: 2021/02/19 00:32:56 by haseo            ###   ########.fr       */
+/*   Updated: 2021/02/19 02:15:49 by haseo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ static void	printf_nbr_by_len(t_spec *spec, char *itoa, int zero_pad_len, int bl
 	write(1, itoa, itoa_len);
 }
 
-void	printf_nbr(t_spec *spec, long nbr)
+void	printf_nbr(t_spec *spec, long long nbr)
 {
 	char	*itoa;
 	int		itoa_len;

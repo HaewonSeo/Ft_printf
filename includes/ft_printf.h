@@ -6,7 +6,7 @@
 /*   By: haseo <haseo@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/12 23:16:08 by haseo             #+#    #+#             */
-/*   Updated: 2021/02/18 02:03:57 by haseo            ###   ########.fr       */
+/*   Updated: 2021/02/19 02:18:34 by haseo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ typedef struct	s_spec
 	int		dot;
 	int		prec;
 	int		width;
-
 	int		type;
 	int		nbr_base;
 	int		nbr_negative;
@@ -35,19 +34,15 @@ typedef struct	s_spec
 
 }				t_spec;
 
-void	printf_spec(t_spec *spec, va_list ap);
-int		print_format(const char *format, va_list ap);
-int		ft_printf(const char *format, ...);
 
 void	init_spec(t_spec *spec);
 void	get_opt_spec(t_spec *spec, const char ch, va_list ap);
 void	handle_unusual_case(t_spec *spec);
 
+int		ft_printf(const char *format, ...);
+
 void	printf_ch(t_spec *spec, const char ch);
 void	printf_str(t_spec *spec, const char *str);
-// void	set_pad_len(t_spec *spec, int *zero_pad_len, int *blank_pad_len, int itoa_len);
-// void	get_cnt_ch(t_spec *spec, int zero_pad_len, int blank_pad_len, int itoa_len);
-// void	printf_nbr_by_len(t_spec *spec, char *itoa, int zero_pad_len, int blank_pad_len, int itoa_len);
-void	printf_nbr(t_spec *spec, long nbr);
+void	printf_nbr(t_spec *spec, long long nbr);
 
 #endif
