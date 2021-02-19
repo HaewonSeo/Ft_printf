@@ -6,7 +6,7 @@
 /*   By: haseo <haseo@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/17 18:32:38 by haseo             #+#    #+#             */
-/*   Updated: 2021/02/19 22:07:46 by haseo            ###   ########.fr       */
+/*   Updated: 2021/02/20 00:37:25 by haseo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,10 +61,11 @@ void	handle_unusual_case(t_spec *spec)
 	}
 	if (spec->type == '%' && spec->hyphen)
 		spec->zero_pad = 0;
-	if ((spec->type == 'd' || spec->type == 'i' || spec->type == 'u') && spec->dot)
-		spec->zero_pad = 0;
-	if (spec->type == 'x' || spec->type == 'X')
-		spec->zero_pad = 0;
+	if (spec->type == 'd' || spec->type == 'i' || spec->type == 'u' || spec->type == 'x' || spec->type == 'X')
+	{	
+		if (spec->dot)
+			spec->zero_pad = 0;
+	}
 	if (spec->type == 'x' || spec->type == 'X' || spec->type == 'p')
 		spec->nbr_base = 16;
 	if (spec->prec < 0)

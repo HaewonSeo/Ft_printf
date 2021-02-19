@@ -6,7 +6,7 @@
 /*   By: haseo <haseo@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/17 18:30:12 by haseo             #+#    #+#             */
-/*   Updated: 2021/02/19 22:15:41 by haseo            ###   ########.fr       */
+/*   Updated: 2021/02/20 00:25:25 by haseo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,25 @@ static void	set_pad_len(t_spec *spec, int *zero_pad_len, int *blank_pad_len, int
 {
 	*zero_pad_len = 0;
 	*blank_pad_len = 0;
+	if (!(spec->dot) && spec->zero_pad && spec->nbr_negative)
+	{
+		spec->prec = spec->width;
+		spec->width = 0;
+		(*zero_pad_len)--;
+	}
 	if (spec->prec > itoa_len)
 	{
-		*zero_pad_len = spec->prec - itoa_len;
+		*zero_pad_len += (spec->prec - itoa_len);
 		*blank_pad_len = spec->width - spec->prec;
 	}
 	else
 		*blank_pad_len = spec->width - itoa_len;
 	if (spec->nbr_negative)
+	{
 		(*blank_pad_len)--;
+		//if (!(spec->dot) && spec->zero_pad)
+		//	(*zero_pad_len)--;
+	}
 	if (spec->type == 'p')
 		*blank_pad_len -= 2;
 }
