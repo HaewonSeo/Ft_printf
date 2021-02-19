@@ -6,7 +6,7 @@
 #    By: haseo <haseo@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/13 00:04:16 by haseo             #+#    #+#              #
-#    Updated: 2021/02/17 19:49:42 by haseo            ###   ########.fr        #
+#    Updated: 2021/02/19 22:18:07 by haseo            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,6 +33,8 @@ RM			= rm -f
 
 all:		libft $(NAME)
 
+bonus:		all
+
 libft:
 			$(MAKE) -C $(LIBFT_DIR) bonus
 			cp $(LIBFT_DIR)/libft.a $(NAME)
@@ -53,4 +55,4 @@ fclean:		clean
 
 re:			fclean all
 
-.PHONY: 	libft all clean fclean re
+.PHONY: 	libft all clean fclean re bonus

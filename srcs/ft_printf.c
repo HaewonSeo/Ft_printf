@@ -6,7 +6,7 @@
 /*   By: haseo <haseo@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/12 23:02:56 by haseo             #+#    #+#             */
-/*   Updated: 2021/02/19 02:18:10 by haseo            ###   ########.fr       */
+/*   Updated: 2021/02/19 22:21:48 by haseo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ static int		print_format(const char *format, va_list ap)
 	int		i;
 	int		cnt_ch;
 	t_spec	spec;
-
 
 	i = 0;
 	cnt_ch = 0;

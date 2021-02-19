@@ -6,7 +6,7 @@
 /*   By: haseo <haseo@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/17 18:32:38 by haseo             #+#    #+#             */
-/*   Updated: 2021/02/19 03:34:02 by haseo            ###   ########.fr       */
+/*   Updated: 2021/02/19 22:07:46 by haseo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@ void	init_spec(t_spec *spec)
 	spec->dot = 0;
 	spec->prec = 0;
 	spec->type = 0;
-
 	spec->nbr_base = 10;
 	spec->nbr_negative = 0;
 	spec->cnt_ch = 0;
+	spec->hash = 0;
 }
 
 void	get_opt_spec(t_spec *spec, const char ch, va_list ap)
@@ -34,6 +34,8 @@ void	get_opt_spec(t_spec *spec, const char ch, va_list ap)
 		spec->hyphen = 1;
 	else if (ch == '.')
 		spec->dot = 1;
+	else if (ch == '#')
+		spec->hash = 1;
 	else if (ft_isdigit(ch))
 	{
 		if (spec->dot == 0)
@@ -60,6 +62,8 @@ void	handle_unusual_case(t_spec *spec)
 	if (spec->type == '%' && spec->hyphen)
 		spec->zero_pad = 0;
 	if ((spec->type == 'd' || spec->type == 'i' || spec->type == 'u') && spec->dot)
+		spec->zero_pad = 0;
+	if (spec->type == 'x' || spec->type == 'X')
 		spec->zero_pad = 0;
 	if (spec->type == 'x' || spec->type == 'X' || spec->type == 'p')
 		spec->nbr_base = 16;

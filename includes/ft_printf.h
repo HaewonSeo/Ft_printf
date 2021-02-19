@@ -6,7 +6,7 @@
 /*   By: haseo <haseo@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/12 23:16:08 by haseo             #+#    #+#             */
-/*   Updated: 2021/02/19 02:18:34 by haseo            ###   ########.fr       */
+/*   Updated: 2021/02/19 22:08:05 by haseo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ typedef struct	s_spec
 	int		nbr_base;
 	int		nbr_negative;
 	int		cnt_ch;
-
+	int		hash;
 }				t_spec;
 
 

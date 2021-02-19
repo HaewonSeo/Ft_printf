@@ -6,7 +6,7 @@
 /*   By: haseo <haseo@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/17 18:30:12 by haseo             #+#    #+#             */
-/*   Updated: 2021/02/19 03:31:20 by haseo            ###   ########.fr       */
+/*   Updated: 2021/02/19 22:15:41 by haseo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,10 +60,10 @@ static void	printf_nbr_by_len(t_spec *spec, char *itoa, int zero_pad_len, int bl
 			ft_putchar_fd(blank_pad, 1);
 		return ;
 	}
-	if (spec->nbr_negative)
-		ft_putchar_fd('-', 1);
 	while((blank_pad_len)-- > 0)
 		ft_putchar_fd(blank_pad, 1);
+	if (spec->nbr_negative)
+		ft_putchar_fd('-', 1);
 	while((zero_pad_len)-- > 0)
 		ft_putchar_fd('0', 1);
 	if (spec->type == 'p')
@@ -89,7 +89,7 @@ void	printf_nbr(t_spec *spec, long long nbr)
 			return ;
 	}
 	else
-		itoa = ft_itoabase(nbr, spec->type);
+		itoa = ft_itoabase(nbr, spec->type, spec->hash);
 	itoa_len = (int)ft_strlen(itoa);
 	set_pad_len(spec, &zero_pad_len, &blank_pad_len, itoa_len);
 	get_cnt_ch(spec, zero_pad_len, blank_pad_len, itoa_len);
