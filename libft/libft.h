@@ -6,7 +6,7 @@
 /*   By: haseo <haseo@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/23 03:17:02 by haseo             #+#    #+#             */
-/*   Updated: 2021/02/19 22:16:24 by haseo            ###   ########.fr       */
+/*   Updated: 2021/02/22 15:00:40 by haseo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,6 @@ t_list				*ft_lstmap(t_list *lst, void *(*f)(void *),
 ** ft_printf
 */
 
-char				*ft_itoabase(long n, char type, int hash);
+char				*ft_itoabase(long n, char type);
 
 #endif

@@ -6,19 +6,17 @@
 /*   By: haseo <haseo@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/17 17:38:31 by haseo             #+#    #+#             */
-/*   Updated: 2021/02/19 22:16:32 by haseo            ###   ########.fr       */
+/*   Updated: 2021/02/22 15:00:43 by haseo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int		ft_nbrlen(long n, int base, int hash)
+static int		ft_nbrlen(long n, int base)
 {
 	int		len;
 
 	len = 0;
-	if (hash && base == 16)
-		len = 2;
 	if (n <= 0)
 		len++;
 	while (n)
@@ -41,7 +39,7 @@ static char		*ft_getbaseset(char type)
 		return (NULL);
 }
 
-char			*ft_itoabase(long nbr, char type, int hash)
+char			*ft_itoabase(long nbr, char type)
 {
 	char	*baseset;
 	int		base;
@@ -50,18 +48,9 @@ char			*ft_itoabase(long nbr, char type, int hash)
 
 	baseset = ft_getbaseset(type);
 	base = ft_strlen(baseset);
-	len = ft_nbrlen(nbr, base, hash);
+	len = ft_nbrlen(nbr, base);
 	if (!(str = ft_calloc(len + 1, sizeof(char))))
 		return (NULL);
-	if (hash && base == 16)
-	{
-		str[0] = '0';
-		if (type == 'x')
-			str[1] = 'x';
-		else
-			str[1] = 'X';
-		len -= 2;
-	}
 	while (len)
 	{
 		str[--len] = baseset[nbr % base];

@@ -6,7 +6,7 @@
 /*   By: haseo <haseo@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/17 18:30:12 by haseo             #+#    #+#             */
-/*   Updated: 2021/02/22 13:53:14 by haseo            ###   ########.fr       */
+/*   Updated: 2021/02/22 15:08:04 by haseo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,7 @@ static void	set_pad_len(t_spec *spec, int *zero_pad_len, int *blank_pad_len, int
 	else
 		*blank_pad_len = spec->width - itoa_len;
 	if (spec->nbr_negative)
-	{
 		(*blank_pad_len)--;
-		//if (!(spec->dot) && spec->zero_pad)
-		//	(*zero_pad_len)--;
-	}
 	if (spec->zero_pad && spec->prec < 0 && spec->nbr_negative)
 	{
 		*zero_pad_len = spec->width - itoa_len - 1;
@@ -99,12 +95,9 @@ void	printf_nbr(t_spec *spec, long long nbr)
 		nbr = -nbr;
 	}
 	if (spec->dot && spec->prec == 0 && nbr == 0)
-	{
-		if (!(itoa = ft_calloc(1, sizeof(char))))
-			return ;
-	}
+		itoa = "";
 	else
-		itoa = ft_itoabase(nbr, spec->type, spec->hash);
+		itoa = ft_itoabase(nbr, spec->type);
 	itoa_len = (int)ft_strlen(itoa);
 	set_pad_len(spec, &zero_pad_len, &blank_pad_len, itoa_len);
 	get_cnt_ch(spec, zero_pad_len, blank_pad_len, itoa_len);

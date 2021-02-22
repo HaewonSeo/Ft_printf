@@ -6,7 +6,7 @@
 /*   By: haseo <haseo@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/17 18:32:38 by haseo             #+#    #+#             */
-/*   Updated: 2021/02/22 14:39:16 by haseo            ###   ########.fr       */
+/*   Updated: 2021/02/22 15:03:06 by haseo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ void	init_spec(t_spec *spec)
 	spec->nbr_base = 10;
 	spec->nbr_negative = 0;
 	spec->cnt_ch = 0;
-	spec->hash = 0;
 }
 
 void	get_opt_spec(t_spec *spec, const char ch, va_list ap)
@@ -34,8 +33,6 @@ void	get_opt_spec(t_spec *spec, const char ch, va_list ap)
 		spec->hyphen = 1;
 	else if (ch == '.')
 		spec->dot = 1;
-	else if (ch == '#')
-		spec->hash = 1;
 	else if (ft_isdigit(ch))
 	{
 		if (spec->dot == 0)
