@@ -6,7 +6,7 @@
 /*   By: haseo <haseo@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/17 18:30:12 by haseo             #+#    #+#             */
-/*   Updated: 2021/02/22 15:08:04 by haseo            ###   ########.fr       */
+/*   Updated: 2021/02/22 15:36:42 by haseo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,10 @@ void	printf_nbr(t_spec *spec, long long nbr)
 		nbr = -nbr;
 	}
 	if (spec->dot && spec->prec == 0 && nbr == 0)
-		itoa = "";
+	{
+		if (!(itoa = ft_calloc(1, sizeof(char))))
+			return ;
+	}
 	else
 		itoa = ft_itoabase(nbr, spec->type);
 	itoa_len = (int)ft_strlen(itoa);
