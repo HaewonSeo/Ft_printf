@@ -6,7 +6,7 @@
 /*   By: haseo <haseo@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/12 23:16:08 by haseo             #+#    #+#             */
-/*   Updated: 2021/02/22 15:06:05 by haseo            ###   ########.fr       */
+/*   Updated: 2021/02/22 17:06:55 by haseo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 
 # define TYPE "cspdiuxX%\0"
 
-typedef struct	s_spec
+typedef struct		s_spec
 {
 	int		zero_pad;
 	int		hyphen;
@@ -31,18 +31,28 @@ typedef struct	s_spec
 	int		nbr_base;
 	int		nbr_negative;
 	int		cnt_ch;
-}				t_spec;
+}					t_spec;
 
-void	init_spec(t_spec *spec);
-void	get_opt_spec(t_spec *spec, const char ch, va_list ap);
-void	handle_unusual_case(t_spec *spec);
+/*
+** get_spec.c
+*/
 
-void	printf_ch(t_spec *spec, const char ch);
-void	printf_str(t_spec *spec, const char *str);
-void	printf_nbr(t_spec *spec, long long nbr);
+void				init_spec(t_spec *spec);
+void				get_opt_spec(t_spec *spec, const char ch, va_list ap);
+void				handle_unusual_case(t_spec *spec);
 
-int		ft_printf(const char *format, ...);
+/*
+** printf_*.c
+*/
 
+void				printf_ch(t_spec *spec, const char ch);
+void				printf_str(t_spec *spec, const char *str);
+void				printf_nbr(t_spec *spec, long long nbr);
 
+/*
+** ft_printf.c
+*/
+
+int					ft_printf(const char *format, ...);
 
 #endif

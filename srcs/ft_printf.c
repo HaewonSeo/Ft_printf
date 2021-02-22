@@ -6,7 +6,7 @@
 /*   By: haseo <haseo@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/12 23:02:56 by haseo             #+#    #+#             */
-/*   Updated: 2021/02/19 22:21:48 by haseo            ###   ########.fr       */
+/*   Updated: 2021/02/22 16:14:07 by haseo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,18 +36,17 @@ static int		print_format(const char *format, va_list ap)
 
 	i = 0;
 	cnt_ch = 0;
-	init_spec(&spec);
 	while (format[i])
 	{
 		if (format[i] == '%')
 		{
-			while(!ft_strchr(TYPE, format[++i]))
+			init_spec(&spec);
+			while (!ft_strchr(TYPE, format[++i]))
 				get_opt_spec(&spec, format[i], ap);
 			spec.type = format[i++];
 			handle_unusual_case(&spec);
 			printf_spec(&spec, ap);
 			cnt_ch += spec.cnt_ch;
-			init_spec(&spec);
 		}
 		else
 		{
@@ -58,7 +57,7 @@ static int		print_format(const char *format, va_list ap)
 	return (cnt_ch);
 }
 
-int		ft_printf(const char *format, ...)
+int				ft_printf(const char *format, ...)
 {
 	va_list		ap;
 	int			cnt_ch;

@@ -6,13 +6,14 @@
 /*   By: haseo <haseo@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/17 18:30:21 by haseo             #+#    #+#             */
-/*   Updated: 2021/02/19 03:15:19 by haseo            ###   ########.fr       */
+/*   Updated: 2021/02/22 17:02:50 by haseo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static void	printf_str_by_len(t_spec *spec, const char *str, int blank_pad_len, int valid_str_len)
+static void	printf_str_by_len(t_spec *spec, const char *str, \
+									int blank_pad_len, int valid_str_len)
 {
 	spec->cnt_ch += valid_str_len;
 	if (spec->hyphen)
@@ -51,7 +52,8 @@ void		printf_str(t_spec *spec, const char *str)
 		printf_str_by_len(spec, str, blank_pad_len, valid_str_len);
 		return ;
 	}
-	valid_str_len = ((spec->prec > 0) && (spec->prec < str_len)) ? spec->prec : str_len;
+	valid_str_len = ((spec->prec > 0) && (spec->prec < str_len)) ? \
+						spec->prec : str_len;
 	blank_pad_len = spec->width - valid_str_len;
 	printf_str_by_len(spec, str, blank_pad_len, valid_str_len);
 }

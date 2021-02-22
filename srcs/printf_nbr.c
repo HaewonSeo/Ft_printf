@@ -6,13 +6,14 @@
 /*   By: haseo <haseo@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/17 18:30:12 by haseo             #+#    #+#             */
-/*   Updated: 2021/02/22 15:36:42 by haseo            ###   ########.fr       */
+/*   Updated: 2021/02/22 17:01:26 by haseo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static void	set_pad_len(t_spec *spec, int *zero_pad_len, int *blank_pad_len, int itoa_len)
+static void	set_pad_len(t_spec *spec, int *zero_pad_len, \
+						int *blank_pad_len, int itoa_len)
 {
 	*zero_pad_len = 0;
 	*blank_pad_len = 0;
@@ -40,7 +41,8 @@ static void	set_pad_len(t_spec *spec, int *zero_pad_len, int *blank_pad_len, int
 		*blank_pad_len -= 2;
 }
 
-static void	get_cnt_ch(t_spec *spec, int zero_pad_len, int blank_pad_len, int itoa_len)
+static void	get_cnt_ch(t_spec *spec, int zero_pad_len, \
+							int blank_pad_len, int itoa_len)
 {
 	spec->cnt_ch += itoa_len;
 	if (zero_pad_len > 0)
@@ -53,36 +55,41 @@ static void	get_cnt_ch(t_spec *spec, int zero_pad_len, int blank_pad_len, int it
 		spec->cnt_ch += 2;
 }
 
-static void	printf_nbr_by_len(t_spec *spec, char *itoa, int zero_pad_len, int blank_pad_len, int itoa_len)
+static void	printf_nbr_part(t_spec *spec, char *itoa, \
+								int zero_pad_len, int itoa_len)
 {
-	char	blank_pad;
-
-	blank_pad = (spec->zero_pad)? '0' : ' ';
-	if (spec->hyphen)
-	{
-		if (spec->nbr_negative)
-			ft_putchar_fd('-', 1);
-		while((zero_pad_len)-- > 0)
-			ft_putchar_fd('0', 1);
-		if (spec->type == 'p')
-			ft_putstr_fd("0x", 1);
-		write(1, itoa, itoa_len);
-		while((blank_pad_len)-- > 0)
-			ft_putchar_fd(blank_pad, 1);
-		return ;
-	}
-	while((blank_pad_len)-- > 0)
-		ft_putchar_fd(blank_pad, 1);
 	if (spec->nbr_negative)
 		ft_putchar_fd('-', 1);
-	while((zero_pad_len)-- > 0)
+	while ((zero_pad_len)-- > 0)
 		ft_putchar_fd('0', 1);
 	if (spec->type == 'p')
 		ft_putstr_fd("0x", 1);
 	write(1, itoa, itoa_len);
 }
 
-void	printf_nbr(t_spec *spec, long long nbr)
+static void	printf_nbr_by_len(t_spec *spec, char *itoa, \
+									int zero_pad_len, int blank_pad_len)
+{
+	char	blank_pad;
+	int		itoa_len;
+
+	itoa_len = (int)ft_strlen(itoa);
+	blank_pad = (spec->zero_pad) ? '0' : ' ';
+	if (spec->hyphen)
+	{
+		printf_nbr_part(spec, itoa, zero_pad_len, itoa_len);
+		while ((blank_pad_len)-- > 0)
+			ft_putchar_fd(blank_pad, 1);
+	}
+	else
+	{
+		while ((blank_pad_len)-- > 0)
+			ft_putchar_fd(blank_pad, 1);
+		printf_nbr_part(spec, itoa, zero_pad_len, itoa_len);
+	}
+}
+
+void		printf_nbr(t_spec *spec, long long nbr)
 {
 	char	*itoa;
 	int		itoa_len;
@@ -104,7 +111,7 @@ void	printf_nbr(t_spec *spec, long long nbr)
 	itoa_len = (int)ft_strlen(itoa);
 	set_pad_len(spec, &zero_pad_len, &blank_pad_len, itoa_len);
 	get_cnt_ch(spec, zero_pad_len, blank_pad_len, itoa_len);
-	printf_nbr_by_len(spec, itoa, zero_pad_len, blank_pad_len, itoa_len);
+	printf_nbr_by_len(spec, itoa, zero_pad_len, blank_pad_len);
 	free(itoa);
 	itoa = NULL;
 }
