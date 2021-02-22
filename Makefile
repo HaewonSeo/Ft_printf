@@ -6,7 +6,7 @@
 #    By: haseo <haseo@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/13 00:04:16 by haseo             #+#    #+#              #
-#    Updated: 2021/02/19 22:18:07 by haseo            ###   ########.fr        #
+#    Updated: 2021/02/22 12:30:51 by haseo            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,4 +55,4 @@ fclean:		clean
 
 re:			fclean all
 
-.PHONY: 	libft all clean fclean re bonus
+.PHONY: 	libft all clean fclean re bonus $(NAME)

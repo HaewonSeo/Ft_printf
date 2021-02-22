@@ -1,4 +1,5 @@
 #include "../includes/ft_printf.h"
+#include <stdio.h>
 
 int main()
 {
@@ -36,7 +37,7 @@ int main()
 	printf("return : %d\n", printf("\t\tresult : |%*c|\n\t\t", -5, 'a') - 16);
 
 	printf("printf(\"%%.c\", 'a')\n");
-	printf("return : %d\n", printf("\t\tresult : |%.c|\n\t\t", 'a') - 16);
+	// printf("return : %d\n", printf("\t\tresult : |%.c|\n\t\t", 'a') - 16);
 
 	printf("printf(\"%%.5c\", 'a')\n");
 	printf("\t\tundefined behavior warning: precision used with 'c'\n");
