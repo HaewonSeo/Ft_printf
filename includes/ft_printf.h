@@ -6,7 +6,7 @@
 /*   By: haseo <haseo@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/12 23:16:08 by haseo             #+#    #+#             */
-/*   Updated: 2021/02/19 22:08:05 by haseo            ###   ########.fr       */
+/*   Updated: 2021/02/19 22:39:31 by haseo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,12 @@ void	init_spec(t_spec *spec);
 void	get_opt_spec(t_spec *spec, const char ch, va_list ap);
 void	handle_unusual_case(t_spec *spec);
 
-int		ft_printf(const char *format, ...);
-
 void	printf_ch(t_spec *spec, const char ch);
 void	printf_str(t_spec *spec, const char *str);
 void	printf_nbr(t_spec *spec, long long nbr);
+
+int		ft_printf(const char *format, ...);
+
+
 
 #endif
