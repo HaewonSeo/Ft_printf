@@ -11,7 +11,7 @@ You will mainly learn how to use **variadic arguments**.
 `c, s, p, d, i, u, x, X, %`
 
 + flag
-`-, 0, ,., *`
+`-, 0, ., *`
 
 ## Tester
 1. ./test
